@@ -1,0 +1,18 @@
+#!/bin/bash
+# warning: use this script only for local testing!!
+
+IMAGE_TAGNAME=pokeclj_pg
+CONTAINER_NAME=pokeclj_local_pg
+CONTAINER_NETWORK=host
+
+echo "building..."
+if [[ -z "$(docker image ls | grep ${IMAGE_TAGNAME})" || $1 == "--force" ]]; then
+    docker build . -t 
+fi
+
+echo "running.."
+if [[ -z "$(docker ps -a | grep ${CONTAINER_NAME})" ]]; then
+    docker run -d --name ${CONTAINER_NAME} --network ${CONTAINER_NETWORK} ${IMAGE_TAGNAME}
+else
+    docker restart ${CONTAINER_NAME}
+fi
