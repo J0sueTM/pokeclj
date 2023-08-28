@@ -1,0 +1,11 @@
+#!/bin/bash
+# warning: use this script only for local testing!!
+
+IMAGE_TAGNAME=pokeclj_api
+CONTAINER_NAME=pokeclj_local_api
+CONTAINER_NETWORK=host
+
+echo "building..."
+if [[ -z "$(docker image ls | grep ${IMAGE_TAGNAME})" || $1 == "--force" ]]; then
+    docker build . -t ${IMAGE_TAGNAME}
+fi

@@ -1,16 +1,18 @@
-CREATE TABLE pokemon_type (
-       id   INTEGER NOT NULL,
-       name VARCHAR,
-
-       CONSTRAINT pk_pokemon_type PRIMARY KEY (id)
+CREATE TABLE type_ (
+  id   INTEGER NOT NULL PRIMARY KEY,
+  name VARCHAR
 );
 
 CREATE TABLE pokemon (
-       id          INTEGER NOT NULL,
-       name        VARCHAR,
-       description TEXT,
-       weigth      DOUBLE PRECISION,
-       height      INTEGER,
+  id          INTEGER NOT NULL PRIMARY KEY,
+  name        VARCHAR,
+  description TEXT,
+  weight      DOUBLE PRECISION,
+  height      INTEGER
+);
 
-       CONSTRAINT pk_pokemon PRIMARY KEY (id)
+CREATE TABLE pokemon_type (
+  id         INTEGER NOT NULL PRIMARY KEY,
+  type_id    INTEGER NOT NULL REFERENCES type_(id),
+  pokemon_id INTEGER NOT NULL REFERENCES pokemon(id)
 );
