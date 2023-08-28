@@ -1,0 +1,4 @@
+/*pgdata
+/*target
+*.env
+!*.env.example

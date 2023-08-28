@@ -7,7 +7,7 @@ CONTAINER_NETWORK=host
 
 echo "building..."
 if [[ -z "$(docker image ls | grep ${IMAGE_TAGNAME})" || $1 == "--force" ]]; then
-    docker build . -t 
+    docker build . -t ${IMAGE_TAGNAME}
 fi
 
 echo "running.."

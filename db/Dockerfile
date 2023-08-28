@@ -1,19 +1,13 @@
 FROM postgres:11-alpine
 
-ARG PG_USER=user
-ARG PG_PASSWORD=pass
-ARG PG_DB=pokeclj_db
+ARG POSTGRES_USER=user
+ARG POSTGRES_PASSWORD=pass
+# at least on prod, should be same as POSTGRES_USER, so the healthcheck can work.
+ARG POSTGRES_DB=user
+ARG POSTGRES_DATA=./pgdata
 
-ARG PG_DATA=./pgdata
+ENV POSTGRES_USER=$POSTGRES_USER
+ENV POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+ENV POSTGRES_DB=$POSTGRES_DB
 
-ENV POSTGRES_USER=$PG_USER
-ENV POSTGRES_PASSWORD=$PG_PASSWORD
-ENV POSTGRES_DB=$PG_DB
-
-HEALTHCHECK \
-    --interval=30s \
-    --timeout=10s  \
-    --retries=3    \
-    CMD psql -U "$PG_USER" -d "$PG_DB" -c "SELECT 1"
-
-VOLUME $PG_DATA:/var/lib/postgresql/data
+VOLUME $POSTGRES_DATA:/var/lib/postgresql/data
