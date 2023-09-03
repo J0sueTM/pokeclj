@@ -1,1 +1,0 @@
-["^ ","~$error?",["^ ","~:row",4,"~:col",1,"~:fixed-arities",["~#set",[1]],"~:name","^0","~:ns","~$apisvc.err","~:top-ns","^7","~:arities",["^ ","~i1",["^ ","~:ret","~:boolean","~:arglist-str","[obj]"]],"~:type","~:fn"],"~:filename","/home/jtm/dev/pokeclj/apisvc/src/apisvc/err.clj"]
