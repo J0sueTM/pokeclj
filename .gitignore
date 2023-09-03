@@ -4,3 +4,4 @@
 !*.env.example
 *profiles.clj
 !*profiles.example.clj
+/*clj-kondo
