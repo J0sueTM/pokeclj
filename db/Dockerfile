@@ -2,7 +2,6 @@ FROM postgres:11-alpine
 
 ARG POSTGRES_USER=user
 ARG POSTGRES_PASSWORD=pass
-# at least on prod, should be same as POSTGRES_USER, so the healthcheck can work.
 ARG POSTGRES_DB=user
 ARG POSTGRES_DATA=./pgdata
 
