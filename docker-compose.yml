@@ -1,11 +1,13 @@
-version: '3.9'
+version: '2.9'
+
 name: pokeclj
+
 services:
   # TODO: frontend app
   api:
     build:
       context: ./apisvc
-    restart: no
+    restart: always
     networks:
       - frontend
       - backend
@@ -19,15 +21,6 @@ services:
         POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
         POSTGRES_DB: "${POSTGRES_DB}"
         POSTGRES_DATA: "${POSTGRES_DATA}"
-    environment:
-      POSTGRES_USER: "${POSTGRES_USER}"
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      POSTGRES_DB: "${POSTGRES_DB}"
-      POSTGRES_DATA: "${POSTGRES_DATA}"
-      # something with postgres having different environment keys compared to
-      # its docker image (a mess tbh), but it works.
-      # https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-USER
-      PGUSER: "${POSTGRES_USER}"
     restart: always
     volumes:
       - ${POSTGRES_DATA}:/var/lib/postgresql/data
