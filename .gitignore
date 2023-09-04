@@ -5,3 +5,4 @@
 *profiles.clj
 !*profiles.example.clj
 /*clj-kondo
+/*lsp

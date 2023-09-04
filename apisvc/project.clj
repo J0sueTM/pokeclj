@@ -11,7 +11,8 @@
                  [hikari-cp "3.0.1"]
                  [environ "1.2.0"]
                  [clj-http "3.12.3"]
-                 [org.clojure/data.json "2.4.0"]]
+                 [org.clojure/data.json "2.4.0"]
+                 [com.github.seancorfield/expectations "2.0.165"]]
   :main ^:skip-aot apisvc.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
