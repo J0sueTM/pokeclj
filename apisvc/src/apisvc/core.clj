@@ -1,10 +1,10 @@
 (ns apisvc.core
-;;  (:require [apisvc.db :as db])
+  (:require
+   [apisvc.server :as api-server])
   (:gen-class))
 
-(defn -main
-  "I don't do a whole lot yet."
-  []
+(defn -main [_]
   (.addShutdownHook
    (Runtime/getRuntime)
-   (Thread. #(println "Shutting down"))))
+   (Thread. #(println "Shutting down")))
+  (api-server/start))
