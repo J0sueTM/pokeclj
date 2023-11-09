@@ -20,7 +20,8 @@
 (def resources
   {:type (gen-resource "type" 20 :type_ [:id :name])
    :pokemon (gen-resource "pokemon" 1281
-                          :pokemon [:id :name :description :weight :height])})
+                          :pokemon [:id :name :description
+                                    :weight :height :complete])})
 
 (defonce ^:private base-url
   (or (env :sync-base-url)

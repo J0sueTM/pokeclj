@@ -7,6 +7,12 @@ services:
   api:
     build:
       context: ./apisvc
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_DATA: "${POSTGRES_DATA}"
+      SYNC_BASE_URL: "https://pokeapi.co/api/v2/"
     restart: always
     networks:
       - frontend

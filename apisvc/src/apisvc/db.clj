@@ -1,16 +1,17 @@
 (ns apisvc.db
   "Persistence"
-  (:require [environ.core :refer [env]]
-            [next.jdbc :as jdbc]
-            [honey.sql :as sql]
-            [hikari-cp.core :as hkr]))
+  (:require
+   [environ.core :refer [env]]
+   [hikari-cp.core :as hkr]
+   [honey.sql :as sql]
+   [next.jdbc :as jdbc]))
 
 (defonce ^:private pool-ds
   (-> {:auto-commit        true
        :read-only          false
-       :connection-timeout 30000
+       :connection-timeout 3000
        :validation-timeout 5000
-       :idle-timeout       600000
+       :idle-timeout       21600000
        :max-lifetime       1800000
        :minimum-idle       10
        :maximum-pool-size  10
@@ -21,9 +22,9 @@
        :database-name      (env :postgres-db)
        :server-name        (env :postgres-host)
        :port-number        (env :postgres-port)
-       :register-mbeans    false}
-      hkr/make-datasource
-      delay))
+       :register-mbeans    false
+       :connection-test-query "SELECT 1"}
+      hkr/make-datasource))
 
 (defn gen-insert [table columns values]
   {:insert-into table :columns columns :values values})
@@ -56,7 +57,7 @@
   "Executes QUERY on persistent db.
    <https://github.com/tomekw/hikari-cp#postgresql-example>."
   [query]
-  (let [conn (jdbc/get-connection {:datasource @pool-ds})]
+  (with-open [conn (jdbc/get-connection {:datasource pool-ds})]
     (try
       (jdbc/execute! conn query)
       (catch Exception e {:error (.getMessage e)}))))

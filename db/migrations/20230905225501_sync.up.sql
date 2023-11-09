@@ -1,0 +1,1 @@
+ALTER TABLE pokemon ADD COLUMN complete BOOLEAN;

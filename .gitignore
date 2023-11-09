@@ -1,4 +1,4 @@
-/*pgdata
+/*pgdata*
 /*target
 *.env
 !*.env.example

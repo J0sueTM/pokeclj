@@ -12,7 +12,12 @@
                  [environ "1.2.0"]
                  [clj-http "3.12.3"]
                  [org.clojure/data.json "2.4.0"]
-                 [com.github.seancorfield/expectations "2.0.165"]]
+                 [com.github.seancorfield/expectations "2.0.165"]
+                 [metosin/reitit "0.7.0-alpha5"]
+                 [metosin/muuntaja "0.6.8"]
+                 [metosin/malli "0.12.0"]
+                 [metosin/ring-swagger-ui "5.0.0-alpha.0"]                 
+                 [ring/ring-jetty-adapter "1.11.0-alpha1"]]
   :main ^:skip-aot apisvc.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
