@@ -137,4 +137,3 @@ sequenceDiagram
 # License
 
 GPL 3.0, Josué Teodoro Moreira <teodoro.josue@pm.me> 2023
-
