@@ -64,8 +64,6 @@
                 [nloaded-yet-nerr? (fn [_] (api-sync/fetch :by-name :pokemon name))])]
     result))
 
-(get-by-name "bulbasaur")
-
 (defn get-by-id [id]
   {})
 
